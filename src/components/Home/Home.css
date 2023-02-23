@@ -1,0 +1,58 @@
+.Home-Grid{
+    /* display: grid;
+    /* grid-auto-flow: column; */
+    /* background: linear-gradient(white,rgb(56, 97, 231)); 
+    height: 77vh;
+    width: 100%;
+    column-gap: 5px;
+    grid-template-columns: repeat(3,1fr); */
+    display: flex;
+    flex-wrap: wrap;
+}
+.Home-Logout{
+    position: fixed;
+    top: 0%;
+    right: 0%;
+}
+.Cards-Phone{
+    padding-left: 1.2%;
+}
+.Cards-Time{
+    padding-right: 1.2%;
+    color:#1976d2;
+    
+}
+.Cards-Heading{
+    display: flex;
+    color: #1976d2;
+    justify-content: space-between;
+}
+textarea  
+{  
+   font-family:"Times New Roman", Times, serif;  
+   font-size: 15px;  
+   border: 0px; 
+}
+textarea {
+    border: none;
+    overflow: auto;
+    outline: none;
+    height: 50%;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    resize: none;
+}
+.Cards-Text{
+    display: block;
+    color: rgb(17, 74, 160);
+    font-size: large;
+    background: transparent;
+    /* background-color: blueviolet; */
+    width: 100%;
+    /* background-color: black; */
+    word-wrap: break-word;
+}
+/* .Cards-Delete{
+    position: relative;
+} */

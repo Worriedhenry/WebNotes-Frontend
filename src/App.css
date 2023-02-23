@@ -6,7 +6,17 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+/* Button{
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -200px, rgba(0, 0, 0, 0.3) 0px 30px 60px -300px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+} */
+.shadow{
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -200px, rgba(0, 0, 0, 0.3) 0px 30px 60px -300px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.Newbutton-container{
+  display: flex;
+  flex-direction: column;
+ 
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -27,12 +37,70 @@
 .App-link {
   color: #61dafb;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media only screen and (max-width: 600px) {
+  .LowerHome {
+    flex-direction: column;
+    justify-content: center;
   }
-  to {
-    transform: rotate(360deg);
+  .Newbutton-container{
+    margin: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+.Home-Grid{
+  justify-content: center;
+}
+.LowerHome{
+  display: flex;
+
+}
+.Header-Profiles{
+  margin: 1%;
+}
+.heading{
+    font-size: xx-large;
+    font-weight: 900;
+    text-align: left;
+    color: tomato;
+    width: 23vw;
+    --x-offset: -0.0625em;
+    --y-offset: 0.0625em;
+    --stroke: 0.025em;
+    --background-color: white;
+    --stroke-color: lightblue;
+    /* animation: heading 2s 0.3s infinite ; */
+    text-shadow: 
+      
+      var(--x-offset)
+      var(--y-offset)
+      0px
+      var(--background-color), 
+      
+      calc( var(--x-offset) - var(--stroke) )
+      calc( var(--y-offset) + var(--stroke) )
+      0px
+      var(--stroke-color);
+    
+  }
+
+@keyframes heading {
+  0% {
+    background-color: pink;
+  }
+  25%{
+    background-color: #efa497;
+  }
+  50%{
+    background-color: #abe1e1;
+  }
+  75%{
+    background-color: #f2f5ac;
+  }
+  100% {
+    background-color: pink;
   }
 }
