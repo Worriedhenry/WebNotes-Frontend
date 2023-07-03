@@ -6,6 +6,18 @@
   height: 40vmin;
   pointer-events: none;
 }
+.LeftHome{
+  /* background-color: #757de8; */
+  background-color: #1976d2;
+  height: 100vh;
+  width: 250px;
+  position: sticky;
+  height:-webkit-fill-available;
+  top: 0px;
+}
+root{
+  height: 100vh;
+}
 /* Button{
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -200px, rgba(0, 0, 0, 0.3) 0px 30px 60px -300px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 } */
@@ -15,6 +27,7 @@
 .Newbutton-container{
   display: flex;
   flex-direction: column;
+  padding: 20px;
  
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -33,14 +46,38 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.NoteSearchQueryBox{
+  width: 70%;
+  height: 4vh;
+  /* border: 15.1px; */
+  padding-left: 12px;
+  border-radius: 4px;
+  margin-left:10%
+}
 .App-link {
   color: #61dafb;
 }
+.RightHome{
+  padding-top: 15px;
+  width: -webkit-fill-available;
+  padding: 15px;
+}
 @media only screen and (max-width: 600px) {
-  .LowerHome {
+  .DialogTruncate{
+    font-size: 0.5em;
+  }
+  /* .LowerHome {
     flex-direction: column;
     justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .LeftHome{
+    width: 100%;
+    height: 115px;
+    position: sticky;
+    top: 0px;
   }
   .Newbutton-container{
     margin: auto;
@@ -49,28 +86,42 @@
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
+  } */
+  .NoteSearchQueryBox{
+    height: 2.5%;
+    width: 50%;
+    margin-left: 1%;
+  }
+  .heading{
+    font-size: 16.3vw;
   }
 }
+/* ============================== */
 .Home-Grid{
   justify-content: center;
 }
 .LowerHome{
   display: flex;
+  position: sticky;
+  top: 0px;
+  height: 100vh;
+}
 
+.LeftHome_Button{
+  width: 80%;
 }
 .Header-Profiles{
   margin: 1%;
 }
 .heading{
-    font-size: xx-large;
     font-weight: 900;
     text-align: left;
-    color: tomato;
-    width: 23vw;
+    color: white;
+    font-size: 3.3vw;
     --x-offset: -0.0625em;
     --y-offset: 0.0625em;
     --stroke: 0.025em;
-    --background-color: white;
+    --background-color: #1976d2;
     --stroke-color: lightblue;
     /* animation: heading 2s 0.3s infinite ; */
     text-shadow: 
