@@ -1,3 +1,20 @@
+#Project Highlights
+##Home Page:
+![image](https://github.com/Worriedhenry/WebNotes-Frontend/assets/107611121/5f129912-f548-4e34-aa0d-edf56b74d22c)
+##Notes Categorisation
+![image](https://github.com/Worriedhenry/WebNotes-Frontend/assets/107611121/a18b3d30-ee6b-4404-bd16-c84917cbdaba)
+![image](https://github.com/Worriedhenry/WebNotes-Frontend/assets/107611121/dd1a294f-4b09-4b3c-83cd-1eb2d766bef8)
+##Searh Functionality 
+![image](https://github.com/Worriedhenry/WebNotes-Frontend/assets/107611121/3615d65a-2201-418b-89a4-151e300ba37c)
+Notes Categorisation is also functional during search.
+
+##Easy Notes Updation and Deletetion:
+![image](https://github.com/Worriedhenry/WebNotes-Frontend/assets/107611121/a135a423-1481-4bca-ba62-573d98b1cb91)
+
+
+
+
+
 
 # Getting Started with Create React App in Your local system
 
