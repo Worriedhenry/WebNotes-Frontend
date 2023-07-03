@@ -1,18 +1,30 @@
-#Project Highlights
-##Home Page:
+Backend Repo Link:https://github.com/Worriedhenry/WebNotes-Backend
+# Project Overview:
+The web-application WebNotes as the Name suggest is used to create and manage daily notes .With its simple and practical UI and optimised UX it aims to provide seamless experience to user.
+# Project Tools:
+The web-application is built with MERN stack and powered by Material-UI.Encryption technologies like JWT and Hashing are used to make the experience secure.Git and Github are used as version controllers.
+# Project Highlights
+## Home Page:
 ![image](https://github.com/Worriedhenry/WebNotes-Frontend/assets/107611121/5f129912-f548-4e34-aa0d-edf56b74d22c)
-##Notes Categorisation
+## Notes Categorisation
 ![image](https://github.com/Worriedhenry/WebNotes-Frontend/assets/107611121/a18b3d30-ee6b-4404-bd16-c84917cbdaba)
 ![image](https://github.com/Worriedhenry/WebNotes-Frontend/assets/107611121/dd1a294f-4b09-4b3c-83cd-1eb2d766bef8)
-##Searh Functionality 
+## Searh Functionality 
 ![image](https://github.com/Worriedhenry/WebNotes-Frontend/assets/107611121/3615d65a-2201-418b-89a4-151e300ba37c)
 Notes Categorisation is also functional during search.
-
-##Easy Notes Updation and Deletetion:
+## Easy Notes Updation and Deletetion:
 ![image](https://github.com/Worriedhenry/WebNotes-Frontend/assets/107611121/a135a423-1481-4bca-ba62-573d98b1cb91)
+## Responsive Design
+For 390px X 844px
+![image](https://github.com/Worriedhenry/WebNotes-Frontend/assets/107611121/1739d2a4-9fcc-4fa5-922f-b11752a87e9e)
+For 844px X 1024px
+![image](https://github.com/Worriedhenry/WebNotes-Frontend/assets/107611121/1632e748-7feb-44a4-b143-d21671097521)
 
 
 
+To run Project in Local System , copy the repository ,install all dependencies mentioned in package.json and use npm start.
+You will also have to clone Backend Respository . you can clone it from https://github.com/Worriedhenry/WebNotes-Backend.
+Use npm start to start backend server
 
 
 
