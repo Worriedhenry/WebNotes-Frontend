@@ -1,5 +1,3 @@
-Project Deployed Link:-https://fastkart.onrender.com/
-Backend Repository Link:=https://github.com/Worriedhenry/BackendEcommerce
 
 # Getting Started with Create React App in Your local system
 
