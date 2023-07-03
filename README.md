@@ -1,4 +1,34 @@
-# Getting Started with Create React App
+Backend Repo Link:https://github.com/Worriedhenry/WebNotes-Backend
+# Project Overview:
+The web-application WebNotes as the Name suggest is used to create and manage daily notes .With its simple and practical UI and optimised UX it aims to provide seamless experience to user.
+# Project Tools:
+The web-application is built with MERN stack and powered by Material-UI.Encryption technologies like JWT and Hashing are used to make the experience secure.Git and Github are used as version controllers.
+# Project Highlights
+## Home Page:
+![image](https://github.com/Worriedhenry/WebNotes-Frontend/assets/107611121/5f129912-f548-4e34-aa0d-edf56b74d22c)
+## Notes Categorisation
+![image](https://github.com/Worriedhenry/WebNotes-Frontend/assets/107611121/a18b3d30-ee6b-4404-bd16-c84917cbdaba)
+![image](https://github.com/Worriedhenry/WebNotes-Frontend/assets/107611121/dd1a294f-4b09-4b3c-83cd-1eb2d766bef8)
+## Searh Functionality 
+![image](https://github.com/Worriedhenry/WebNotes-Frontend/assets/107611121/3615d65a-2201-418b-89a4-151e300ba37c)
+Notes Categorisation is also functional during search.
+## Easy Notes Updation and Deletetion:
+![image](https://github.com/Worriedhenry/WebNotes-Frontend/assets/107611121/a135a423-1481-4bca-ba62-573d98b1cb91)
+## Responsive Design
+For 390px X 844px
+![image](https://github.com/Worriedhenry/WebNotes-Frontend/assets/107611121/1739d2a4-9fcc-4fa5-922f-b11752a87e9e)
+For 844px X 1024px
+![image](https://github.com/Worriedhenry/WebNotes-Frontend/assets/107611121/1632e748-7feb-44a4-b143-d21671097521)
+
+
+
+To run Project in Local System , copy the repository ,install all dependencies mentioned in package.json and use npm start.
+You will also have to clone Backend Respository . you can clone it from https://github.com/Worriedhenry/WebNotes-Backend.
+Use npm start to start backend server
+
+
+
+# Getting Started with Create React App in Your local system
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -31,13 +61,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
 ## Learn More
 
