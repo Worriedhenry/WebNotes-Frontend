@@ -1,5 +1,6 @@
 import {createContext ,useEffect,useState} from "react";
 import axios from "axios";
+import BackendLink from "../BackendLink";
 const AuthContext=createContext()
 
 function AuthState({children}) {
@@ -8,7 +9,7 @@ function AuthState({children}) {
     useEffect(()=>{
         if (localStorage.getItem("User")) {
             axios
-              .get("http://localhost:3001/auth/user/"+localStorage.getItem("User"))
+              .get(BackendLink+"/auth/user/"+localStorage.getItem("User"))
               .then(res =>{
                 if(res.status==200){
                     setUser(res.data.id)

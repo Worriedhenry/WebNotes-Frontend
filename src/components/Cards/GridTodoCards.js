@@ -11,6 +11,7 @@ import { format } from 'timeago.js'
 import TodoDialog from "./TodoDialog";
 import { AuthContext } from "../../Context/AuthContext";
 import { TaskContext } from "../../Context/TaskContext";
+import BackendLink from "../../BackendLink";
 const HoverPaper = styled(Paper)(({ theme }) => ({
     transition: theme.transitions.create('box-shadow'),
     '&:hover': {
@@ -71,7 +72,7 @@ export default function GridTodoCars(props) {
     }, [])
     async function TaskComplete() {
         try {
-            let result = await axios.put("http://localhost:3001/TaskComplete/"+User, { id: props.id})
+            let result = await axios.put(BackendLink+"/TaskComplete/"+User, { id: props.id})
             if(result.status==200){
                 setStatus("Completed")
             }
@@ -83,7 +84,7 @@ export default function GridTodoCars(props) {
         const data = {
             id: props.id,
         }
-        let result=await axios.put("http://localhost:3001/delTask/"+User, data)
+        let result=await axios.put(BackendLink+"/delTask/"+User, data)
         if(result.status==200){
             setTask(result.data.array.reverse())
         }

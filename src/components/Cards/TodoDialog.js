@@ -6,6 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import CheckIcon from '@mui/icons-material/Check';
 import CancelIcon from '@mui/icons-material/Cancel';
+import BackendLink from "../../BackendLink";
 
 const StyledButton = styled(IconButton)(({ theme }) => ({
     width: "3vw",
@@ -30,7 +31,7 @@ const StyledTitleTypography=styled(Typography)(({theme})=>({
 export default function TodoDialog({ props, DialogController, setDialogController, Status, setTask, User, setStatus }) {
     async function TaskComplete() {
         try {
-            let result = await axios.put("http://localhost:3001/TaskComplete/" + User, { id: props.id })
+            let result = await axios.put(BackendLink+"/TaskComplete/" + User, { id: props.id })
             if (result.status == 200) {
                 setStatus("Completed")
             }
@@ -42,7 +43,7 @@ export default function TodoDialog({ props, DialogController, setDialogControlle
         const data = {
             id: props.id,
         }
-        let result = await axios.put("http://localhost:3001/delTask/" + User, data)
+        let result = await axios.put(BackendLink+"/delTask/" + User, data)
         if (result.status == 200) {
             setTask(result.data.array.reverse())
         }

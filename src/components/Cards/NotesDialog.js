@@ -11,6 +11,7 @@ import React,{ useState,useContext } from "react";
 import axios from "axios"
 import { NotesContext } from "../../Context/NotesContext";
 import { AuthContext } from "../../Context/AuthContext";
+import BackendLink from "../../BackendLink";
 
 const StyledButton=styled(IconButton)(({theme})=>({
     width:"2.75vw",
@@ -46,7 +47,7 @@ DialogController, setDialogController }) {
     async function UpdateNote(){
         setPicker(false)
         try{
-        let result = await axios.put("http://localhost:3001/note/update/"+User,{id:props.id,Color:blockPickerColor,Text:NotesText,  Format:NotesFormat})
+        let result = await axios.put(BackendLink+"/note/update/"+User,{id:props.id,Color:blockPickerColor,Text:NotesText,  Format:NotesFormat})
         if (result.status===200){
             setNotes(result.data.reverse())
             setAllNotes(result.data.reverse())
@@ -62,7 +63,7 @@ DialogController, setDialogController }) {
             id:props.id,
         }
         setPicker(false)
-        let result=await axios.post("http://localhost:3001/notes/delete/"+User,data)
+        let result=await axios.post(BackendLink+"/notes/delete/"+User,data)
         const UpdatedNotes=result.data
         setNotes(UpdatedNotes.reverse())
         setAllNotes(UpdatedNotes.reverse())

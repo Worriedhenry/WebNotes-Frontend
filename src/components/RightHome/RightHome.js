@@ -3,7 +3,7 @@ import { Button, styled, Grid,Typography } from '@mui/material'
 import { useNavigate, useSearchParams } from "react-router-dom";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import GridCard from "../Cards/GridNoteCard";
-import SortIcon from '@mui/icons-material/Sort';
+import BackendLink from "../../BackendLink";
 import axios from 'axios'
 import { NotesContext } from "../../Context/NotesContext";
 import { AuthContext } from "../../Context/AuthContext";
@@ -34,7 +34,7 @@ export default function RightHome() {
       Text: "Add your Text Here"
     }
     var array_Reversed = []
-    let result = await axios.post('http://localhost:3001/new/'+User, NoteData)
+    let result = await axios.post(BackendLink+'/new/'+User, NoteData)
     if(result.status==200){
       setNotes(result.data.Notes.reverse())
       setAllNotes(result.data.Notes.reverse())
@@ -63,7 +63,7 @@ export default function RightHome() {
     async function getData() {
       const query = searchParams.get("query");
       const lowercaseQuery = query ? query.toLowerCase() : null;
-      const result = await axios.get("http://localhost:3001/getnotes/"+User)
+      const result = await axios.get(BackendLink+"/getnotes/"+User)
       var array_Reversed = result.data.Notes
       array_Reversed.reverse()
       setAllNotes(array_Reversed)
@@ -104,7 +104,6 @@ export default function RightHome() {
   const lowercaseQuery = query ? query.toLowerCase() : null;
 
   let filteredNotes = AllNotes;
-  console.log(AllNotes)
   if(Format=="personal"){
     filteredNotes=AllNotes.filter(note=>note.Format=="Personal")
   }

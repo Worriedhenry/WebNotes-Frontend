@@ -11,6 +11,7 @@ import TodoHome from "../Home/TodoHome";
 import { TaskContext } from "../../Context/TaskContext";
 import GridTodoCards from "../Cards/GridTodoCards";
 import { AuthContext } from "../../Context/AuthContext";
+import BackendLink from "../../BackendLink";
 
 const currentDateTime = new Date().toISOString().slice(0, 16);
 
@@ -52,7 +53,7 @@ export default function Todo() {
       DateTime: DateTime,
 
     }
-    let result = await axios.post('http://localhost:3001/NewTask/' + User, data)
+    let result = await axios.post(BackendLink+'/NewTask/' + User, data)
     var array_Reversed = result.data.Todo
     array_Reversed.reverse()
     setTask(array_Reversed)
@@ -61,7 +62,7 @@ export default function Todo() {
   }
   useEffect(() => {
     async function getData() {
-      const result = await axios.get("http://localhost:3001/Task/" + User)
+      const result = await axios.get(BackendLink+"/Task/" + User)
       var array_Reversed = result.data.err.reverse()
       setAllTask(array_Reversed)
       if (searchParams.get("query")) {
@@ -79,6 +80,7 @@ export default function Todo() {
   const ClearSearch=()=>{
     setSearchParams({"query":""})
     setQuery("")
+    setTask(AllTask)
   }
   return <div className="RightHome">
     <input
@@ -90,7 +92,7 @@ export default function Todo() {
 
     </input>
     {Query.length != 0 && <StyledButton onClick={FilterTask} variant="contained"  ><StyledTypography>Search</StyledTypography></StyledButton>}
-    {Query.length != 0 && <StyledButton variant="contained" color="error" ><StyledTypography>Clear</StyledTypography></StyledButton>}
+    {Query.length != 0 && <StyledButton onClick={ClearSearch} variant="contained" color="error" ><StyledTypography>Clear</StyledTypography></StyledButton>}
     <div style={{
       display: "flex",
       justifyContent: "space-between",
