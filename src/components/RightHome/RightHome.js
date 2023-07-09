@@ -6,13 +6,14 @@ import GridCard from "../Cards/GridNoteCard";
 import SortIcon from '@mui/icons-material/Sort';
 import axios from 'axios'
 import { NotesContext } from "../../Context/NotesContext";
-
+import { AuthContext } from "../../Context/AuthContext";
 const StyledButton = styled(Button)(({ theme }) => ({
   
     minWidth:"0px",
     [theme.breakpoints.down('sm')]: {
       width:"8vw",
-      MaxWidth:"100%"
+      MaxWidth:"100%",
+      whiteSpace:"nowrap"
     },
   }));
   const StyledTypography=styled(Typography)(({theme})=>({
@@ -23,25 +24,22 @@ const StyledButton = styled(Button)(({ theme }) => ({
 }))
 export default function RightHome() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const navigate = useNavigate()
   const [Query, setQuery] = useState( searchParams.get("query") ? searchParams.get("query") : "")
-  const [CurrentNote, setCurrentNote] = useState(1)
   const { Notes, setNotes, AllNotes, setAllNotes } = React.useContext(NotesContext)
   const [Loader, setLoader] = useState(true)
-  const [New, setNew] = useState("New Note")
   const current = new Date()
+  const {User}=React.useContext(AuthContext)
   const AddNote = async () => {
     const NoteData = {
-      Phone: searchParams.get("Phone"),
-      Visibilty: "Personal",
       Text: "Add your Text Here"
     }
     var array_Reversed = []
-    let result = await axios.post('http://localhost:3001/new', NoteData)
-    array_Reversed = result.data.Notes
-    array_Reversed.reverse()
-    setNotes(array_Reversed)
-    setAllNotes(array_Reversed)
+    let result = await axios.post('http://localhost:3001/new/'+User, NoteData)
+    if(result.status==200){
+      setNotes(result.data.Notes.reverse())
+      setAllNotes(result.data.Notes.reverse())
+
+    }
   }
 
 
@@ -61,14 +59,12 @@ export default function RightHome() {
   setNotes(filteredNotes)
   }
   useEffect(() => {
+    console.log(User)
     async function getData() {
-      if (!sessionStorage.getItem("CurrentUser")) {
-        navigate('/login')
-      }
       const query = searchParams.get("query");
       const lowercaseQuery = query ? query.toLowerCase() : null;
-      const result = await axios.post("http://localhost:3001/", { Phone: searchParams.get("Phone") })
-      var array_Reversed = result.data.err
+      const result = await axios.get("http://localhost:3001/getnotes/"+User)
+      var array_Reversed = result.data.Notes
       array_Reversed.reverse()
       setAllNotes(array_Reversed)
       if (searchParams.get("format")) {
@@ -118,15 +114,13 @@ export default function RightHome() {
   const currentQuery = new URLSearchParams(searchParams);
   currentQuery.set('format', Format);
   setSearchParams(currentQuery.toString());
-  console.log(filteredNotes)
   if(lowercaseQuery){
     filteredNotes=filteredNotes.filter(note=>note.NoteText.toLowerCase().includes(lowercaseQuery))
-    console.log(filteredNotes)
   }
   setNotes(filteredNotes);
 }
 
-  return <div md={10}
+  return <div 
     className="RightHome"
   >
     <input
@@ -150,7 +144,7 @@ export default function RightHome() {
         <StyledButton size="small" onClick={() => ChangeQuery("personal")} variant={searchParams.get("format") == "personal" ? "contained" : "text"} ><StyledTypography>Personal</StyledTypography></StyledButton>
         <StyledButton size="small" onClick={() => ChangeQuery("work")} variant={searchParams.get("format") == "work" ? "contained" : "text"}><StyledTypography>Work</StyledTypography></StyledButton>
       </div>
-      <StyledButton size="small" style={{ justifyContent: "flex-start" }} onClick={AddNote} startIcon={<AddCircleIcon  />} >
+      <StyledButton mr={1} size="small" style={{ justifyContent: "flex-start" }} onClick={AddNote} startIcon={<AddCircleIcon  />} >
         <StyledTypography>Add Notes</StyledTypography></StyledButton>
 
     </div>

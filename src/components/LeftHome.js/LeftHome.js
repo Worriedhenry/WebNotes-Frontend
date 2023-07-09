@@ -21,7 +21,7 @@ const StyledButton=styled(Button)(({theme})=>({
 const StyledTypography=styled(Typography)(({theme})=>({
     fontSize:"small",
     [theme.breakpoints.down('sm')]: {
-    fontSize:"0.75em"
+    fontSize:"0.5em"
   },
 }))
 export default function LeftHome() {
@@ -48,10 +48,15 @@ export default function LeftHome() {
           </Button>
       </Grid>
       <Grid item md={12}>
+        <Button  size="small" style={{ color: "white", margin: "3px", justifyContent: "flex-start" }} startIcon={<AddCircleIcon />} endIcon={path=="task" ? <ArrowRightIcon /> : ""} >
+          <StyledTypography>Task</StyledTypography>
+          </Button>
+      </Grid>
+      <Grid item md={12}>
         <Button size="small" style={{ color: "white", margin: "3px", justifyContent: "flex-start" }} color="error" startIcon={<ArticleIcon />}><StyledTypography>Contribute</StyledTypography></Button>
     </Grid>
       <Grid item md={12}>
-        <Button size="small" style={{ color: "white", margin: "3px", justifyContent: "flex-start" }} color="error" startIcon={<OutputIcon />}><StyledTypography>Log Out</StyledTypography></Button>
+        <Button size="small" style={{ color: "white", margin: "3px", justifyContent: "flex-start" }} color="error" startIcon={<OutputIcon  />}><StyledTypography>Log Out</StyledTypography></Button>
     </Grid>
     </Grid>
   </Grid>

@@ -7,44 +7,65 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import CancelIcon from '@mui/icons-material/Cancel';
 import PersonIcon from '@mui/icons-material/Person';
 import {TwitterPicker } from "react-color";
-import { useState,useContext } from "react";
+import React,{ useState,useContext } from "react";
 import axios from "axios"
 import { NotesContext } from "../../Context/NotesContext";
-
+import { AuthContext } from "../../Context/AuthContext";
 
 const StyledButton=styled(IconButton)(({theme})=>({
-    width:"3vw",
+    width:"2.75vw",
     [theme.breakpoints.down('sm')]: {
         width:"7vw"
       },
      }));
+const StyledTextfield=styled(TextField)(({theme})=>({
+    '& .MuiInputBase-input': {
+        fontSize: 'small', // Font size for medium and larger screens
+    
+        [theme.breakpoints.down('sm')]: {
+          fontSize: '0.5em', // Font size for smaller screens
+        },
+      },
+     }));
+const StyledTypography=styled(Typography)(({theme})=>({
+    fontSize:"1em",
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '0.55em', // Font size for smaller screens
+        lineHeight:"10px"
+      },
+     }));
 export default function NotesDialog({ props, 
 DialogController, setDialogController }) {
-
+    const {User} = React.useContext(AuthContext)
     const [NotesFormat, setNotesFormat] = useState(props.Format)
     const [NotesText, setNotesText] = useState(props.Text)
     const [Picker, setPicker] = useState(false)
     const [VisiblityIcon, setVisiblityIcon] = useState(NotesFormat == "Public" ? <GroupsIcon sx={{height:"100%",width:"100%"}} /> : <PersonIcon sx={{height:"100%",width:"100%"}} />)
     const [blockPickerColor, setBlockPickerColor] = useState("#FFFFFF")
-    const {Notes,setNotes}=useContext(NotesContext)
+    const {Notes,setNotes,AllNotes,setAllNotes}=useContext(NotesContext)
     async function UpdateNote(){
         setPicker(false)
-        let result = await axios.put("http://localhost:3001/note/update",{id:props.id,Color:blockPickerColor,Text:NotesText,  Format:NotesFormat,Phone:props.Phone})
+        try{
+        let result = await axios.put("http://localhost:3001/note/update/"+User,{id:props.id,Color:blockPickerColor,Text:NotesText,  Format:NotesFormat})
         if (result.status===200){
             setNotes(result.data.reverse())
+            setAllNotes(result.data.reverse())
         }
+        }catch(err){
+            console.log(err)
+        }
+
     }
-    async function DeleteNote(key){
+    async function DeleteNote(){
         try{
         const data={
             id:props.id,
-            Phone:props.Phone
         }
         setPicker(false)
-        let result=await axios.post("http://localhost:3001/notes/delete",data)
+        let result=await axios.post("http://localhost:3001/notes/delete/"+User,data)
         const UpdatedNotes=result.data
-        console.log(result.data)
         setNotes(UpdatedNotes.reverse())
+        setAllNotes(UpdatedNotes.reverse())
         }catch(err){
             console.log(err)
         }
@@ -69,25 +90,29 @@ DialogController, setDialogController }) {
                         width: "fit-content",
                         height: "fit-content",
                         maxHeight: "70vh",
-                        minHeight:"40vh"
+                        maxWidth:"70vh"
                     },
                 },
             }}
         >
-            <Grid className="Cards-Container" justifyContent="space-between" alignItems="space-between" container rowSpacing={1} md={12} sx={{ background: {blockPickerColor} }}>
+            <Grid className="Cards-Container" justifyContent="space-between" alignItems="space-between" container spacing={2} md={12} >
                 <Grid item md={12} container >
                     <Grid item md={6} xs={6}>
-                        <Typography sx={{ color: "red" }}>{NotesFormat}
-                        </Typography>
+                        <StyledTypography sx={{ color: "red" }}>{NotesFormat}
+                        </StyledTypography>
                     </Grid>
-                    <Grid textAlign="center" item xs={6} md={6}>
-                        <Typography value={NotesText} sx={{ color: "green" }}>{format(props.Time)}
-                        </Typography>
+                    <Grid textAlign="right" item xs={6} md={6}>
+                        <StyledTypography value={NotesText} sx={{ color: "green" }}>{format(props.Time)}
+                        </StyledTypography>
                     </Grid>
                 </Grid>
                 <Grid item md={12} xs={12}>
-                    <TextField sx={{ maxHeight: "15vw",minHeight:"10vw",width:
-                    "100%" ,fontSize:"small"}} variant="standard" 
+                    <StyledTextfield sx={{
+              maxHeight: 'calc(70vh - 15vw)',
+              minHeight: '10vw',
+              width: '100%',
+              overflowY: 'hidden',
+            }} variant="standard" 
                     fullWidth 
                     multiline
                     InputProps={{ disableUnderline: true }}

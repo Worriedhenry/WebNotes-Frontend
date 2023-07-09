@@ -17,18 +17,24 @@ import { Typography } from '@mui/material';
 import { useState } from 'react';
 import { NotesState } from './Context/NotesContext';
 import { AuthState } from './Context/AuthContext';
+import TodoPages from './components/ComponentContainer/TaskComponents';
 import { TaskState } from './Context/TaskContext';
+import NotesPage from './components/ComponentContainer/NotesComponent';
+import ProtectedRoutes from './ProtectedRoutes';
 function App() {
   return (
     <BrowserRouter>
       <NotesState>
+          <AuthState>
         <TaskState>
-        <Routes>
-          <Route path='/notes' element={<><div className='LowerHome'><LeftHome  /><RightHome  /></div></>} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
-        </Routes>
+            <Routes>
+              <Route path='/notes' element={<ProtectedRoutes Component={ <NotesPage />} />} />
+              <Route path='/task' element={<ProtectedRoutes Component={ <TodoPages />} />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/login' element={<Login />} />
+            </Routes>
         </TaskState>
+          </AuthState>
       </NotesState>
     </BrowserRouter>
   );

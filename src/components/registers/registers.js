@@ -2,6 +2,7 @@ import React,{useState} from "react"
 import axios from 'axios'
 import Error from "../errors"
 import {useNavigate} from 'react-router-dom'
+import { AuthContext } from "../../Context/AuthContext"
 import './register.css'
 
 function Register(){
@@ -11,6 +12,7 @@ function Register(){
     const [password,setPassword]=useState('')
     const [cpassword,setCpassword]=useState('')
     const [error,setError]=useState(100)
+    const {setUser}=React.useContext(AuthContext)
     const userData={
         name:Name,
         Phone:phone,
@@ -26,10 +28,13 @@ function Register(){
         setPassword("")
         setCpassword("")
         if(result.data.err!==200){
+
             setTimeout(() => setError(100), 3000);
         }
         else{
-            navigate(`/login`)
+            setUser(result.data?.id)
+            localStorage.setItem("User",result.data?.token)
+            navigate(`/notes`)
         }
     }
    

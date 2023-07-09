@@ -61,6 +61,7 @@ root{
   padding-top: 15px;
   width: -webkit-fill-available;
   padding: 15px;
+  background-color: white;
 }
 @media only screen and (max-width: 600px) {
   .DialogTruncate{

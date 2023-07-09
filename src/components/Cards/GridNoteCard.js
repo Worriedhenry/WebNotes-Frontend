@@ -1,18 +1,21 @@
-import { Grid, IconButton, Tooltip, Typography,styled } from "@mui/material"
+import { Grid, IconButton, Tooltip, Typography,styled,Paper } from "@mui/material"
 import { format} from 'timeago.js'
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import { useState } from "react";
 import NotesDialog from "./NotesDialog";
-import { useSearchParams } from "react-router-dom";
-import { useEffect } from "react";
-
+const HoverPaper = styled(Paper)(({ theme }) => ({
+    transition: theme.transitions.create('box-shadow'),
+    '&:hover': {
+      boxShadow: theme.shadows[8], 
+    },
+  }));
 const TitleTypography = styled(Typography)(({ theme }) => ({
   
     fontSize:"small",
     textOverflow:"ellipsis",
     wordWrap:"nowrap",
     [theme.breakpoints.down('sm')]: {
-      fontSize:"0.75em", 
+      fontSize:"0.55em", 
       textOverflow:"ellipsis",
     wordWrap:"normal",
     overflow:"hidden",
@@ -23,28 +26,28 @@ const TextTypography=styled(Typography)(({ theme }) => ({
   
     fontSize:"small",
     [theme.breakpoints.down('sm')]: {
-      fontSize:"0.5em", 
+      fontSize:"0.40em", 
       MaxWidth:"100%"
     },
   }));
 const StyledButton=styled(IconButton)(({theme})=>({
-    width:"3vw",
+    width:"2.5vw",
     [theme.breakpoints.down('sm')]: {
         width:"7vw"
       },
      }));
 export default function GridCard(props) {
-
-    const [ViewNote,setViewNote]=useState(false)
     const [DialogController,setDialogController]
     =useState(false)
-    const [searchParams,setSearchParams]=useSearchParams()
 
    
 
 
     return (
-        <Grid className="Cards-Container" container rowSpacing={0.5} md={12} sx={{ background: "white" }}>
+        <HoverPaper
+        elevation={3}
+        >
+        <Grid className="Cards-Container" container  md={12} sx={{ background: "white" }}>
             <Grid item md={12} container >
                 <Grid item md={6} xs={6}>
                     <TitleTypography sx={{ color: "red" }}>{props.Format}
@@ -69,5 +72,6 @@ export default function GridCard(props) {
             </Grid>
         <NotesDialog props={props} DialogController={DialogController} setDialogController={setDialogController}/>
         </Grid>
+        </HoverPaper>
     )
 }
