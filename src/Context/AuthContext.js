@@ -7,9 +7,9 @@ function AuthState({children}) {
     const [User,setUser]=useState(null)
     const [Loading,setLoading]=useState(true)
     useEffect(()=>{
-        if (localStorage.getItem("User")) {
+        if (localStorage.getItem("WebNotesUser")) {
             axios
-              .get(BackendLink+"/auth/user/"+localStorage.getItem("User"))
+              .get(BackendLink+"/auth/user/"+localStorage.getItem("WebNotesUser"))
               .then(res =>{
                 if(res.status==200){
                     setUser(res.data.id)

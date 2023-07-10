@@ -15,6 +15,10 @@ const LogoTypography=styled(Typography)(({theme})=>({
   },
 
 }))
+const handleLogout=()=>{
+  localStorage.removeItem("WebNotesUser")
+  window.location.reload()
+}
 const StyledButton=styled(Button)(({theme})=>({
     width:"5vw"
 }))
@@ -53,10 +57,10 @@ export default function LeftHome() {
           </Button>
       </Grid>
       <Grid item md={12}>
-        <Button size="small" style={{ color: "white", margin: "3px", justifyContent: "flex-start" }} color="error" startIcon={<ArticleIcon />}><StyledTypography>Contribute</StyledTypography></Button>
+        <Button onClick={()=>window.open('https://github.com/Worriedhenry/WebNotes-Frontend', '_blank')} size="small" style={{ color: "white", margin: "3px", justifyContent: "flex-start" }} color="error" startIcon={<ArticleIcon />}><StyledTypography>Contribute</StyledTypography></Button>
     </Grid>
       <Grid item md={12}>
-        <Button size="small" style={{ color: "white", margin: "3px", justifyContent: "flex-start" }} color="error" startIcon={<OutputIcon  />}><StyledTypography>Log Out</StyledTypography></Button>
+        <Button onClick={handleLogout} size="small" style={{ color: "white", margin: "3px", justifyContent: "flex-start" }} color="error" startIcon={<OutputIcon  />}><StyledTypography>Log Out</StyledTypography></Button>
     </Grid>
     </Grid>
   </Grid>

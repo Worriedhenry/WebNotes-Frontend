@@ -119,7 +119,11 @@ export default function RightHome() {
   setNotes(filteredNotes);
 }
 
-  return <div 
+  return <>
+  <head>
+      <title>Notes-WebNotes</title>
+    </head>
+  <div 
     className="RightHome"
   >
     <input
@@ -153,4 +157,5 @@ export default function RightHome() {
       {Notes && Notes.map((e) => <Grid md={3} xs={6} item><GridCard key={e._id} id={e._id} Format={e.Format} Phone={searchParams.get("Phone")} Name={searchParams.get("Name")} Text={e.NoteText} Time={e.Time} Color={e.Color} /></Grid>)}
     </Grid>
   </div>
+  </>
 }

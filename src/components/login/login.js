@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid } from '@mui/material/';
+import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid,styled } from '@mui/material/';
 import Box from '@mui/material/Box';
 import BackendLink from '../../BackendLink';
 import axios from 'axios';
@@ -7,6 +7,15 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../Context/AuthContext';
+
+const LogoTypography=styled(Typography)(({theme})=>({
+
+  fontSize:"3vw",
+  [theme.breakpoints.down('sm')]: {
+    fontSize:"5vw"
+  },
+
+}))
 export default function Login() {
   const navigate = useNavigate()
 
@@ -39,7 +48,7 @@ export default function Login() {
 
     }
     else {
-      localStorage.setItem("User", result.data.token)
+      localStorage.setItem("WebNotesUser", result.data.token)
       setUser(result.data?.id)
       navigate(`/notes`)
     }
@@ -47,7 +56,10 @@ export default function Login() {
     setPassword("")
   };
 
-  return (
+  return (<>
+    <head>
+      <title>Login-WebNotes-Notes and Task Manager</title>
+    </head>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <Box
@@ -58,9 +70,7 @@ export default function Login() {
           alignItems: 'center',
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-          {/* <LockOutlinedIcon /> */}
-        </Avatar>
+        <LogoTypography align="center" className="headingPrompt" mt={0} >WebNotes</LogoTypography>
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
@@ -89,10 +99,10 @@ export default function Login() {
             id="password"
             autoComplete="current-password"
           />
-          <FormControlLabel
+          {/* <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
-          />
+          /> */}
           <Button
             type="submit"
             fullWidth
@@ -106,11 +116,6 @@ export default function Login() {
             {error}
           </Typography>
           <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
             <Grid item>
               <Link href="/register" variant="body2">
                 {"Don't have an account? Sign Up"}
@@ -120,5 +125,6 @@ export default function Login() {
         </Box>
       </Box>
     </Container>
+    </>
   );
 }

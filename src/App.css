@@ -138,6 +138,30 @@ root{
       var(--stroke-color);
     
   }
+.headingPrompt{
+    font-weight: 900;
+    text-align: left;
+    color: #1976d2;
+    font-size: 3.3vw;
+    --x-offset: -0.0625em;
+    --y-offset: 0.0625em;
+    --stroke: 0.025em;
+    --background-color: lightblue;
+    --stroke-color: lightblue;
+    /* animation: heading 2s 0.3s infinite ; */
+    text-shadow: 
+      
+      var(--x-offset)
+      var(--y-offset)
+      0px
+      var(--background-color), 
+      
+      calc( var(--x-offset) - var(--stroke) )
+      calc( var(--y-offset) + var(--stroke) )
+      0px
+      var(--stroke-color);
+    
+  }
 
 @keyframes heading {
   0% {

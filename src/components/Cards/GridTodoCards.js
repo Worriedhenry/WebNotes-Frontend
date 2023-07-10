@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './Cards.css'
 import DeleteIcon from '@mui/icons-material/Delete';
-import BorderColorIcon from '@mui/icons-material/BorderColor';
 import CheckIcon from '@mui/icons-material/Check';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import { Button, Paper, IconButton, Tooltip, Grid, styled, Typography } from '@mui/material'
