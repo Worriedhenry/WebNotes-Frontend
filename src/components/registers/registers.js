@@ -4,6 +4,7 @@ import Error from "../errors"
 import {useNavigate} from 'react-router-dom'
 import { AuthContext } from "../../Context/AuthContext"
 import './register.css'
+import BackendLink from "../../BackendLink"
 
 function Register(){
     const navigate=useNavigate()
@@ -21,7 +22,7 @@ function Register(){
     }
     const HandleChange=async ()=>{
         setError(111)
-        let result= await axios.post('http://localhost:3001/register',userData)
+        let result= await axios.post(BackendLink+'/register',userData)
         setError(result.data.err)
         setName("")
         setPhone("")
