@@ -41,7 +41,7 @@ function Register(){
             return
         }
 
-        let result= await axios.post('http://localhost:3001/register',userData)    
+        let result= await axios.post(BackendLink+'/register',userData)    
         setName("")
         setPhone("")
         setPassword("")
