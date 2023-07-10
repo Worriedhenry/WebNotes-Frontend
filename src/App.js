@@ -32,6 +32,7 @@ function App() {
               <Route path='/task' element={<ProtectedRoutes Component={ <TodoPages />} />} />
               <Route path='/register' element={<Register />} />
               <Route path='/login' element={<Login />} />
+              <Route path='/*' element={<Login />} />
             </Routes>
         </TaskState>
           </AuthState>
