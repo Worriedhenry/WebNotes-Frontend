@@ -43,12 +43,12 @@ export default function LeftHome() {
           </Button>
       </Grid>
       <Grid item md={12}>
-        <Button  size="small" style={{ color: "white", margin: "3px", justifyContent: "flex-start" }} startIcon={<AddCircleIcon />} endIcon={path=="notes" ? <ArrowRightIcon /> : ""} >
+        <Button onClick={()=>navigate("/notes")} size="small" style={{ color: "white", margin: "3px", justifyContent: "flex-start" }} startIcon={<AddCircleIcon />} endIcon={path=="notes" ? <ArrowRightIcon /> : ""} >
           <StyledTypography>Notes</StyledTypography>
           </Button>
       </Grid>
       <Grid item md={12}>
-        <Button  size="small" style={{ color: "white", margin: "3px", justifyContent: "flex-start" }} startIcon={<AddCircleIcon />} endIcon={path=="task" ? <ArrowRightIcon /> : ""} >
+        <Button onClick={()=>navigate("/task")} size="small" style={{ color: "white", margin: "3px", justifyContent: "flex-start" }} startIcon={<AddCircleIcon />} endIcon={path=="task" ? <ArrowRightIcon /> : ""} >
           <StyledTypography>Task</StyledTypography>
           </Button>
       </Grid>

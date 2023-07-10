@@ -1,6 +1,7 @@
 import { Grid, IconButton, Tooltip, Typography,styled,Paper } from "@mui/material"
 import { format} from 'timeago.js'
 import BorderColorIcon from '@mui/icons-material/BorderColor';
+import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import { useState } from "react";
 import NotesDialog from "./NotesDialog";
 const HoverPaper = styled(Paper)(({ theme }) => ({
@@ -66,7 +67,7 @@ export default function GridCard(props) {
             <Grid md={12}>
                 <Tooltip title="update">
                     <StyledButton onClick={()=>setDialogController(true)} color="primary">
-                        <BorderColorIcon sx={{width:"100%",height:"100%"}} />
+                        <OpenInFullIcon sx={{width:"100%",height:"100%"}} />
                     </StyledButton>
                 </Tooltip>
             </Grid>

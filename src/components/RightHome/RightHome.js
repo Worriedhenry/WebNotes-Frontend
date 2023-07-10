@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, styled, Grid,Typography } from '@mui/material'
+import { Button, styled, Grid,Typography, CircularProgress } from '@mui/material'
 import { useNavigate, useSearchParams } from "react-router-dom";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import GridCard from "../Cards/GridNoteCard";
@@ -147,7 +147,8 @@ export default function RightHome() {
         <StyledTypography>Add Notes</StyledTypography></StyledButton>
 
     </div>
-    {!Notes && <h3 style={{ width: "100%", height: '100%', margin: 'auto', textAlign: 'center', color: "#1976d2" }}>Click on New Note to add Notes</h3>}
+    {!Notes && <div style={{width:"100%",height:"80vh",display:"flex",justifyContent:"center",alignItems:"center"}}> <CircularProgress color="primary" /></div>}
+    {Notes && Notes.length==0 && <h3 style={{ width: "100%", height: '100%', margin: 'auto', textAlign: 'center', color: "#1976d2" }}>Click on New Note to add Notes</h3>}
     <Grid container spacing={2} className="Home-Grid">
       {Notes && Notes.map((e) => <Grid md={3} xs={6} item><GridCard key={e._id} id={e._id} Format={e.Format} Phone={searchParams.get("Phone")} Name={searchParams.get("Name")} Text={e.NoteText} Time={e.Time} Color={e.Color} /></Grid>)}
     </Grid>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Home from "../Home/home";
-import { Button, Tooltip, TextField, styled, Dialog, Typography, Grid } from '@mui/material'
+import { Button, Tooltip, TextField, styled, Dialog, Typography, Grid ,CircularProgress} from '@mui/material'
 import { useNavigate, useSearchParams } from "react-router-dom";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -108,7 +108,8 @@ export default function Todo() {
         <StyledTypography>Add Notes</StyledTypography></StyledButton>
 
     </div>
-    {!Task && <h3 style={{ width: "100%", height: '100%', margin: 'auto', textAlign: 'center', color: "#1976d2" }}>Click on Add task to schedule a task</h3>}
+    {!Task && <div style={{width:"100%",height:"80vh",display:"flex",justifyContent:"center",alignItems:"center"}}> <CircularProgress color="primary" /></div>}
+    {Task && Task.length==0 && <h3 style={{ width: "100%", height: '100%', margin: 'auto', textAlign: 'center', color: "#1976d2" }}>Click on Add task to schedule a task</h3>}
     <Grid container spacing={2} className="Home-Grid">
       {Task && Task.map((e) => <Grid md={3} xs={6} item><GridTodoCards key={e._id} id={e._id} Format={e.Format} Phone={searchParams.get("Phone")} Name={searchParams.get("Name")} Text={e.TodoText} status={e.Status} Time={e.Time} Color={e.Color} Head={e.TodoHeading} /></Grid>)}
     </Grid>
