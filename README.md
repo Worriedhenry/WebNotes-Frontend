@@ -1,4 +1,7 @@
 Backend Repo Link:https://github.com/Worriedhenry/WebNotes-Backend
+Dummy Login
+User-9595959595
+Pass-123123
 # Project Overview:
 The web-application WebNotes as the Name suggest is used to create and manage daily notes .With its simple and practical UI and optimised UX it aims to provide seamless experience to user.
 # Project Tools:
